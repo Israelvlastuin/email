@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Caixa de Entrada</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Remetente</th>
+      <th>Assunto</th>
+      <th>Data/Hora</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="mensagem : ${mensagens}">
+      <td th:text="${mensagem.remetente}"></td>
+      <td th:text="${mensagem.assunto}"></td>
+      <td th:text="${mensagem.dataHora}"></td>
+      <td>
+        <a th:href="@{/mensagem/{id}(id=${mensagem.id})}">Ler</a>
+        <form th:action="@{/mensagem/excluir/{id}(id=${mensagem.id})}" method="post" style="display:inline;">
+          <button type="submit">Excluir <a href=""></a></button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
